@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	{% include "_nav_user.html.twig" %}
+	<div class="container-fluid pt-5" id="body_movie">
+		<main class="container-fluid mt-5">
+			<div class="row justify-content-center">
+				<h1 class="text-center text-white mt-1">{{ movie.name }}</h1>
+				<div class="separation"><hr></div>
+				<div class="text-center  col-lg-11 col-md-11 col-sm-11 my-5 pb-5" id="border_card">
+					<img src="/{{ movie.image }}" class="img-fluid mt-2 mb-3" id="movie_img_show_one" alt="...">
+					<h1 class="my-5 text-center">{{ movie.name }}</h1>
+					<h3 class="text-center mt-4">Durée :
+						{{ movie.minutes }}
+						minutes</h3>
+					<h3 class="text-center mt-4">{{ movie.description }}</h3>
+					<h3 class="text-center mt-4">Tarif :
+						{{ movie.price }}
+						€</h3>
+					{% if session.user is defined %}
+						<a class="button_gradient" href="/movieReservation/addMovieReservation/{{ movie.id }}">Réserver</a>
+					{% endif %}
+					{% if session.user is not defined %}
+						<a class="button_gradient" href="/security/login">Réserver</a>
+					{% endif %}
+					<a class="button m-3" href="/movie/indexForUser">Retour</a>
+				</div>
+			</div>
+		</main>
+	</div>
+</div>{% endblock %}

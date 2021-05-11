@@ -1,0 +1,25 @@
+{% extends 'adminlayout.html.twig' %}
+{% block title %}{% endblock %}
+{% block content %}
+{% include "Admin/admin_nav.html.twig" %}
+<div class="main-content">
+<header>
+    <h2>
+        <label for="nav-toggle">
+            <span class="las la-bars"></span>
+        </label>
+        Tableau de bord
+    </h2>
+    <div class="search-wrapper">
+        <span class="las la-search"></span>
+        <input type="search" placeholder="Recherche">
+    </div>
+    <div class="user-wrapper">
+        <img src="{{ session.user.image }}" width="60px" height="50px" alt="">
+        <div>
+            <h4> {{ session.user.username }}</h4>
+            <small> Administrateur </small>
+        </div>
+    </div>
+</header>
+{% endblock %}

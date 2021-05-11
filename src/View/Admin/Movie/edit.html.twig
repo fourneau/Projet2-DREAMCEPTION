@@ -1,0 +1,13 @@
+{% extends 'adminlayout.html.twig' %}
+
+{% block content %}
+    {% include "Admin/adminheader.html.twig" %}
+    <main>
+        <div class="time"><span class="defile"> {{ "now"|date("H:i:s d/m/Y") }}</span></div>
+        <div class="title">
+            <h2>Editer le film : {{ movie.name }}</h2>
+        </div>
+            {% include 'Admin/Movie/_form.html.twig' %}  
+        </main>
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% block content %}
+	<div class="container-fluid">
+		<a class="logo_nav" href="/"><img src="/assets/images/logo_dream.png" class="img-responsive logo pt-2"></a>
+		<div class="row nav_desktop">
+			<nav class="col-6" id="navbar_user_css_desktop">
+				<ul class="nav_css">
+					<li class="navbar_user_li">
+						<a class="nav-link active" aria-current="page" href="/"><span class="las la-home"></span><span> Home</span></a>
+					</li>
+					<li class="navbar_user_li">
+						<a class="nav-link" href="/movie/indexForUser"><span class="lab la-youtube"></span><span> Upload</span></a>
+					</li>
+					<li class="navbar_user_li">
+						<a class="nav-link" href="/product/indexUser"><img src="https://img.icons8.com/nolan/64/virtual-reality.png"/>Produits</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="col-6" id="navbar_user_css_desktop_right">
+				<ul class="col nav_css_right">
+					{% if session.user is not defined %}
+						<li class="navbar_user_li">
+							<a class="nav-link" href="/contact/new"><span class="las la-envelope"></span></a>
+						</li>
+					{% endif %}
+					{% if session.user is defined %}
+						{% if session.user.is_admin == 1 %}
+							<li class="navbar_user_li">
+								<a class="nav-link" href="/admin/index"><span class="las la-user-circle"></span></a>
+							</li>
+						{% endif %}
+						{% if session.user.is_admin == 0 %}
+							<li class="navbar_user_li">
+								<a class="nav-link" href="/security/show"><span class="las la-user-circle"></span></a>
+							</li>
+							<li class="navbar_user_li">
+								<a class="nav-link" href="/contact/newFormUser"><span class="las la-envelope"></span></a>
+							</li>
+							<li class="navbar_user_li">
+								<a class="nav-link" href="/home/cart"><span class="las la-shopping-cart"></span></a>
+							</li>
+						{% endif %}
+						<li class="navbar_user_li">
+							<a class="nav-link" href="/security/logout"><span class="las la-sign-out-alt"></span></a>
+						</li>
+					{% endif %}
+					{% if session.user is not defined %}
+						<li class="navbar_user_li">
+							<a class="nav-link" href="/security/login"><span class="las la-sign-in-alt"></span></a>
+						</li>
+					{% endif %}
+				</ul>
+			</nav>
+		</div>
+	</div>
+
+	{# -------------BURGER MENU-----------#}	
+
+	<nav role='navigation' id="navbar_user_css_mobile">
+		<div id="menuToggle">
+			<input type="checkbox" />
+			<span></span>
+			<span></span>
+			<span></span>
+			<ul id="menu">
+				<a class="nav-link active" aria-current="page" href="/"><li class="navbar_user_li">Home</li></a>
+				<a class="nav-link" href="/movie/indexForUser"><li class="navbar_user_li">Upload</li></a>
+				<a class="nav-link" href="/product/indexUser"><li class="navbar_user_li">Produits</li></a>
+				{% if session.user is not defined %}
+					<a class="nav-link" href="/contact/new"><li class="navbar_user_li">Contact</li></a>
+				{% endif %}
+				{% if session.user is defined %}
+					{% if session.user.is_admin == 0 %}
+						<a class="nav-link" href="/security/show"><li class="navbar_user_li">Mon Compte</li></a>
+						<a class="nav-link" href="/contact/newFormUser"><li class="navbar_user_li">Contactez-nous</li></a>
+						<a class="nav-link" href="/home/cart"><li class="navbar_user_li">Panier</li></a>
+					{% endif %}
+					<a class="nav-link" href="/security/logout"><li class="navbar_user_li">Logout</li></a>
+					{% if session.user.is_admin == 1 %}
+						<a class="nav-link" href="/admin/index"><li class="navbar_user_li">Admin</li></a>
+					{% endif %}
+				{% endif %}
+				{% if session.user is not defined %}
+					<a class="nav-link" href="/security/login"><li class="navbar_user_li">Connexion</li></a>
+				{% endif %}
+			</ul>
+		</div>
+	</nav>
+{% endblock %}

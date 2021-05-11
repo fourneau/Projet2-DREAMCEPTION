@@ -1,0 +1,30 @@
+{% extends 'adminlayout.html.twig' %}
+	{% block content %}
+		{% include "Admin/adminheader.html.twig" %}
+			<main>
+				<div class="time">
+					<span class="defile"> {{ "now"|date("H:i:s d/m/Y") }} </span>
+				</div>
+				<div class="card-movie">
+					<div class="card-index">
+				</div>
+					<div class="border_movies_card">
+						<img src="/{{ movie.image }}" class="card-img-top img-fluid p-2" alt="..." id="movies_image">
+						<div class="card-movie-body text-center">
+							<p class="card-title text-center" style="font-size: 1.5rem">
+								<strong>{{ movie.name }}</strong>
+							</p>
+							<p class="card-text"><small>Durée : {{ movie.minutes }}min</small></p>
+							<p class="card-text">Tarif : {{ movie.price }} €</p>
+							<div class="movies_buttons">
+								<a href="/admin/editMovie/{{ movie.id }}" class="button_gradient button-big">Modifier</a>
+								<a href="/admin/deleteMovie/{{movie.id}}" class="button_gradient button-big">Supprimer</a>
+								<a href="/admin/indexMovies" class="button button-mob">Retour</a>
+							</div>
+						</div>
+					</div>
+				</div>
+		</main>
+	{% endblock %}
+
+

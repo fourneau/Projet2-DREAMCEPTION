@@ -1,0 +1,28 @@
+{% extends 'adminlayout.html.twig' %}
+ {% block content %}
+	{% include "Admin/adminheader.html.twig" %}
+<main>
+	<div class="time">
+		<span class="defile"> {{ "now"|date("H:i:s d/m/Y") }} </span>
+	</div>
+	<div class="card-movie">
+		<div class="border_movies_card">
+			<img src="/{{ product.image }}" class="card-img-top img-fluid p-2" alt="image du produit" id="show_product_image">
+			<div class="card-movie-body text-center">
+				<p class="card-title text-center" style="font-size: 1.5rem">
+				<strong> {{ product.name }} </strong>
+				</p>
+				<p class="card-text">Prix:{{ product.price }}€</p>
+				<p class="card-text">Stock:{{ product.stock }}pièces</p>
+				<p class="card-text">{{ product.description }}</p>
+				<p class="card-text">Poids:{{ product.weight }}kg</p>
+				<div class="movies_buttons">
+					<a type="back" href="/admin/editProduct/{{ product.id }}" class="button_gradient button-big" value="Modifier">Modifier</a>
+					<a type="back" href="/admin/deleteProduct/{{product.id}}" class="button_gradient button-big" value="Supprimer">Supprimer</a>
+					<a type="back" href="/admin/indexProduct" class="button button-mob" value="Retour">Retour</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+{% endblock %}

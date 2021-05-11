@@ -1,0 +1,93 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+	{% include "/_nav_user.html.twig" %}
+
+	<section class="container-fluid pt-5 px-0" id="body">
+		<h1 class="text-center">Restez connectez avec Dreamception</h1>
+		<div class="separation"><hr></div>
+		<div class="container-fluid p-4">
+			<div class="contact_form row m-5" id="contact_row">
+				<form method="post">
+					<input type="hidden" value="{{ contact.id }}" name="id">
+					<div class="row g-2">
+						<div class="col-md mx-3 my-3">
+							<div class="form-floating">
+								<input type="text" class="form-control" id="floatingInputs" placeholder="firstname" value="{{ session.user.firstname }}" name="firstname">
+								<label for="floatingInput" class="form-label pt-2">Firstname :</label>
+							</div>
+							{% if errors.firstname is defined and not empty %}
+								<div class="alert alert-warning" role="alert">
+									{{ errors.firstname }}
+								</div>
+							{% endif %}
+						</div>
+						<div class="col-md mx-3 my-3">
+							<div class="form-floating">
+								<input type="text" class="form-control" id="floatingInputs" placeholder="Nom" value="{{ session.user.lastname }}" name="lastname">
+								<label for="floatingInput" class="form-label pt-2">Lastname :</label>
+							</div>
+							{% if errors.lastname is defined and not empty %}
+								<div class="alert alert-warning" role="alert">
+									{{ errors.lastname }}
+								</div>
+							{% endif %}
+						</div>
+					</div>
+					<div class="row g-2">
+						<div class="col-md mx-3 my-3">
+							<div class="form-floating">
+								<input type="text" class="form-control" id="floatingInputs" placeholder="Email" value="{{ session.user.email }}" name="email">
+								<label for="floatingInput" class="form-label pt-2">Email :</label>
+							</div>
+							{% if errors.email is defined and not empty %}
+								<div class="alert alert-warning" role="alert">
+									{{ errors.email }}
+								</div>
+							{% endif %}
+						</div>
+					</div>
+					<div class="row g-2">
+						<div class="col-md mx-3 my-3">
+							<select name="subject" class="form-control" id="floatingInputs">
+								<option value="Sujet de la demande">Objet de votre demande:</option>
+								<option value="Echange">Echange de votre produit</option>
+								<option value="Retour">retour d'un produit</option>
+								<option value="Informations">Information sur votre commande</option>
+								<option value="Livraison">Question concernant la livraison</option>
+								<option value="Reservation">Question sur la réservation d'une scéance</option>
+							</select>
+						</div>
+					</div>
+					{% if errors.subject is defined and not empty %}
+						<div class="alert alert-warning" role="alert">
+							{{ errors.subject }}
+						</div>
+					{% endif %}
+					<div class="form-floating mx-3 my-3">
+						<textarea type="text" class="form-control" id="floatingInput_message" placeholder="Message" value="{{ contact.message }}" name="message"></textarea>
+						<label for="floatingInput" class="form-label pt-2">Message :</label>
+					</div>
+					{% if errors.message is defined and not empty %}
+						<div class="alert alert-warning" role="alert">
+							{{ errors.message }}
+						</div>
+					{% endif %}
+					<div class="col-md mx-3 my-3">
+						<div class="rating text-center">
+							<h4>Laissez-nous votre avis</h4>
+							<a href="#5" title="Donner 5 étoiles">☆</a>
+							<a href="#4" title="Donner 4 étoiles">☆</a>
+							<a href="#3" title="Donner 3 étoiles">☆</a>
+							<a href="#2" title="Donner 2 étoiles">☆</a>
+							<a href="#1" title="Donner 1 étoile">☆</a>
+						</div>
+					</div>
+					<div class="form-floating mt-4 text-center">
+						<input type="submit" class="button_gradient" value="Valider">
+						<a type="back" href="/" class="button m-2" value="Retour">Retour</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+{% endblock %}

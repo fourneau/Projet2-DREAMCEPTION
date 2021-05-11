@@ -1,0 +1,99 @@
+<form method="post" class="container" enctype="multipart/form-data">
+    <div class="form-box">
+        <input type="hidden" value="{{ user.id }}" name="id">
+        <div class="input-box">
+            <label for="username" class="form-label"> Pseudo :</label>
+            <input type="text" class="form-control" id="username" placeholder="" name="username">
+        </div>
+        <div class="errors">
+            {% if errors.username is defined and not empty %}
+                <p>{{ errors.username }}</p>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <label for="lastname" class="form-label"> Nom :</label>
+            <input type="text" class="form-control" id="lastname" placeholder="" name="lastname">
+        </div>
+        <div class="errors">
+            {% if errors.lastname is defined and not empty %}
+                <div>{{ errors.lastname }}</div>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <label for="firstname" class="form-label">Prénom :</label>
+            <input type="text" class="form-control" id="firstname" placeholder="" name="firstname">
+        </div>
+        <div class="errors">
+            {% if errors.firstname is defined and not empty %}
+                <div>{{ errors.firstname }}</div>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <label for="email" class="form-label">Email :</label>
+            <input type="email" class="form-control" id="email" placeholder="" name="email">
+        </div>
+        <div class="errors">
+            {% if errors.email is defined and not empty %}
+                <div>{{ errors.email }}</div>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <label for="password" class="form-label">Mot de Passe :</label>
+            <input type="password" class="form-control" id="password" placeholder="" name="password">
+        </div>
+        <div class="errors">
+            {% if errors.password is defined and not empty %}
+                <div>{{ errors.password }}</div>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <label for="check_password" class="form-label">Vérification du Mot de Passe :</label>
+            <input type="password" class="form-control" id="check_password" placeholder="" name="check_password">
+        </div>
+        <div class="errors">
+            {% if errors.check_password is defined and not empty %}
+                <div>{{ errors.check_password }}</div>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <label for="adress" class="form-label">Adresse :</label>
+            <input type="text" class="form-control" id="adress" placeholder="" name="adress">
+        </div>
+        <div class="errors">
+            {% if errors.adress is defined and not empty %}
+                <div>{{ errors.adress }}</div>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <label for="phone" class="form-label">Numéro de téléphone :</label>
+            <input type="number" class="form-control" id="phone" placeholder="" name="phone">
+        </div>
+        <div class="errors">
+            {% if errors.phone is defined and not empty %}
+                <div>{{ errors.phone }}</div>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <label for="birthday" class="form-label">Date de naissance : </label>
+            <input type="date" class="form" id="birthday" name="birthday">
+        </div>
+        <div class="errors">
+            {% if errors.birthday is defined and not empty %}
+                <div>{{ errors.birthday }}</div>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <label for="image" class="form-label">Ajout photo de profil : </label>
+            <input type="file" class="form" id="image" name="image">
+        </div>
+        <div class="errors">
+            {% if errors.image is defined and not empty %}
+                <div>{{ errors.image }}</div>
+            {% endif %}
+        </div>
+        <div class="container-fluid">
+            <input type="submit" class="form-button" value="Valider">
+            <a type="back" href="/user/index" class="return-button" value="Retour"><i class="las la-undo"></i></a>
+        </div>
+    </div>
+</form>

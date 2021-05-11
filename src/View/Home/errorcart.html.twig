@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	{% include "_nav_user.html.twig" %}
+	<div class="container-fluid pt-5" id="body_movie">
+		<h1 class="text-center text-white mt-1">Limite de stock</h1>
+		<div class="separation"><hr></div>
+		<main class="container-fluid mt-5 pb-5">
+			<div class="row">
+				<div class="col-12 mt-2">
+					<h2 class="mb-3 text-center">Vous avez atteint la limite des stocks !</h2>
+					<div class="col-12 mt-2 text-center">
+						<a class="button m-3" href="/product/indexuser">Retour produits</a>
+						<a class="button m-3" href="/home/cart">Aller au panier</a>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+{% endblock %}
+

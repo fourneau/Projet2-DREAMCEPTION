@@ -1,0 +1,52 @@
+{% extends 'adminlayout.html.twig' %}
+{% block title %}{% endblock %}
+{% block content %}
+    {% include "Admin/adminheader.html.twig" %}
+        <main>
+            <div class="time">
+                <span class="defile"> {{ "now"|date("H:i:s d/m/Y") }} </span>
+            </div>
+            <div class="card">
+                <div class="card-index">
+                    <h2> Commandes </h2>
+                    <div class="form-floating mb-3 text-end">
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="text-white">Membre</th>
+                        <th scope="col" class="text-white">N° Commande</th>
+                        <th scope="col" class="text-white">Date</th>
+                        <th scope="col" class="text-white">Total</th>
+                        <th scope="col" class="text-white text-end"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for indexOrder in indexOrders %}
+                        <tr>
+                            <td class="text-white">
+                                <a href="/user/show/{{ indexOrder.user_id }}" class="text-white">{{ indexOrder.username }}</a>
+                            </td>
+                            <td class="text-white"> <a href="orderDetailAdmin/{{ indexOrder.id }}" class="text-white"> {{ indexOrder.id }}</a>
+                            </td>
+                            <td class="text-white">{{ indexOrder.order_date }}</td>
+                            <td class="text-white">{{ indexOrder.total }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th id="total" colspan="3">Total :</th>
+                        <td id="sum" colspan="3"> {{ sales }} </td>
+                    </tr>
+                    </tfoot>
+                </table>
+                <div class="card-back">
+                    <a href="/admin/index">
+                        <button> Retour</button>
+                    </a>
+                </div>
+            </div>
+        </main>
+{% endblock %}

@@ -1,0 +1,83 @@
+<form method="post" class="container" enctype="multipart/form-data">
+    <div class="form-box">
+        <input type="hidden" value="{{ product.id }}" name="id">
+        <div class="input-box">
+            <input type="text" class="form-control" id="floatingInput" placeholder="" value="{{ product.name }}"
+                   name="name">
+            <label for="floatingInput" class="form-label">Nom Produit:</label>
+        </div>
+        <div class="errors">
+            {% if errors.name is defined and not empty %}
+                <div>{{ errors.name }}</div>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <input type="number" class="form-control" id="floatingInput" placeholder="" value="{{ product.price }}"
+                   name="price">
+            <label for="floatingInput" class="form-label">Prix :</label>
+        </div>
+        <div class="errors">
+            {% if errors.price is defined and not empty %}
+                <p>{{ errors.price }}</p>
+            {% endif %}
+        </div>
+
+        <div class="input-box">
+            <input type="number" class="form-control" id="floatingInput" placeholder="" value="{{ product.stock }}"
+                   name="stock">
+            <label for="floatingInput" class="form-label">Stock :</label>
+        </div>
+        <div class="errors">
+            {% if errors.stock is defined and not empty %}
+                <p>{{ errors.stock }}</p>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <textarea type="text" class="form-control" id="floatingInput" placeholder=""
+                      value="{{ product.description }}" name="description"></textarea>
+            <label for="floatingInput" class="form-label">Description :</label>
+        </div>
+        <div class="errors">
+            {% if errors.description is defined and not empty %}
+                <p>{{ errors.description }}</p>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <input type="number" class="form-control" id="floatingInput" placeholder="" value="{{ product.weight }}"
+                   name="weight">
+            <label for="floatingInput" class="form-label">Poids:</label>
+        </div>
+        <div class="errors">
+            {% if errors.weight is defined and not empty %}
+                <p>{{ errors.weight }}</p>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <select class="form-select" aria-label="Default select example" name="category_id">
+                <option value="0">Sélectionnez une catégorie</option>
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="errors">
+            {% if errors.category_id is defined and not empty %}
+                <p>{{ errors.category_id }}</p>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <label for="image" class="form-label">Ajout photo de profil : </label>
+            <input type="file" class="form" id="image" name="image">
+        </div>
+        <div class="errors">
+            {% if errors.image is defined and not empty %}
+                <p>{{ errors.image }}</p>
+            {% endif %}
+        </div>
+        <div class="container-fluid">
+            <input type="submit" class="form-button" value="Valider">
+            <a type="back" href="/admin/indexProduct" class="return-button" value="Retour"><i
+                        class="las la-undo"></i></a>
+        </div>
+    </div>
+</form>

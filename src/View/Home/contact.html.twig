@@ -1,0 +1,76 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+	{% include "/_nav_user.html.twig" %}
+	<section class="pt-5" id="contact_html">
+		<h2 class="text-center  mt-3">Une question ? Contactez-nous !</h2>
+		<div class="separation"><hr></div>
+		<div class="container-fluid p-5" id="contact_form_vh">
+			<div class="contact_form row mt-5" id="contact_row">
+				<form method="post">
+					<input type="hidden" value="{{ contact.id }}" name="id">
+					<div class="row g-2">
+						<div class="col-md mx-3 my-3">
+							<div class="form-floating">
+								<input type="text" class="form-control" id="floatingInputs" placeholder="Prénom" value="{{ contact.firstname }}" name="firstname">
+								<label for="floatingInput" class="form-label pt-2">Prénom :</label>
+							</div>
+							{% if errors.firstname is defined and not empty %}
+								<div class="alert" role="alert" id="contact_error">
+									{{ errors.firstname }}
+								</div>
+							{% endif %}
+						</div>
+						<div class="col-md mx-3 my-3">
+							<div class="form-floating">
+								<input type="text" class="form-control" id="floatingInputs" placeholder="Nom" value="{{ contact.lastname }}" name="lastname">
+								<label for="floatingInput" class="form-label pt-2">Nom :</label>
+							</div>
+							{% if errors.lastname is defined and not empty %}
+								<div class="alert" role="alert" id="contact_error">
+									{{ errors.lastname }}
+								</div>
+							{% endif %}
+						</div>
+					</div>
+					<div class="row g-2">
+						<div class="col-md mx-3 my-3">
+							<div class="form-floating">
+								<input type="text" class="form-control" id="floatingInputs" placeholder="Sujet de votre demande" value="{{ contact.subject }}" name="subject">
+								<label for="floatingInput" class="form-label pt-2">Sujet :</label>
+							</div>
+							{% if errors.subject is defined and not empty %}
+								<div class="alert" role="alert" id="contact_error">
+									{{ errors.subject }}
+								</div>
+							{% endif %}
+						</div>
+						<div class="col-md mx-3 my-3">
+							<div class="form-floating">
+								<input type="text" class="form-control" id="floatingInputs" placeholder="Email" value="{{ contact.email }}" name="email">
+								<label for="floatingInput" class="form-label pt-2">Email :</label>
+							</div>
+							{% if errors.email is defined and not empty %}
+								<div class="alert" role="alert" id="contact_error">
+									{{ errors.email }}
+								</div>
+							{% endif %}
+						</div>
+					</div>
+					<div class="form-floating mx-3 my-3">
+						<textarea type="text" class="form-control" id="floatingInput_message" placeholder="Message" value="{{ contact.message }}" name="message"></textarea>
+						<label for="floatingInput" class="form-label pt-2">Message :</label>
+						{% if errors.message is defined and not empty %}
+							<div class="alert" role="alert" id="contact_error">
+								{{ errors.message }}
+							</div>
+						{% endif %}
+					</div>
+					<div class="form-floating mt-5 mb-5 text-center">
+						<input type="submit" class="button_gradient" value="Envoyer">
+						<a type="back" href="/" class="button m-3">Retour</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+{% endblock %}

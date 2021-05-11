@@ -1,0 +1,62 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+	{% include "_nav_user.html.twig" %}
+	<div class="container-fluid px-0 pt-5" id="body">
+		<h1 class="text-center text-white">Films</h1>
+		<div class="separation"><hr></div>
+		<main class="container-fluid mt-5">
+			<br>
+
+			<div class="btn-group px-5" role="group">
+				<button id="btnGroupDrop1" type="button" class="button button-mob dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Filtrer
+				</button>
+				<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+					<a class="dropdown-item" href="/movie/filterLong">Du + long</a>
+					<a class="dropdown-item" href="/movie/filterShort">Du + court</a>
+					<a class="dropdown-item" href="/movie/filterExPrice">Du + cher au - cher</a>
+					<a class="dropdown-item" href="/movie/filterChPrice">Du - cher au + cher</a>
+				</div>
+			</div>
+			<div class="row" id="movies_cards">
+				{% for movie in movies %}
+					<div class="col-lg-4 col-md-6 col-s-12 p-5" id="movies_card">
+						<div class="card" id="border_card">
+							<img src="{{ movie.image }}" class="card-img-top img-fluid p-2" alt="..." id="image">
+							<div class="card-body text-center">
+								<p class="card-title text-center" style="font-size: 1.5rem">
+									<strong>{{ movie.name }}</strong>
+								</p>
+								<p class="card-text">
+									<small>Durée :
+										{{ movie.minutes }}
+										min</small>
+								</p>
+								<p class="card-text">Tarif :
+									{{ movie.price }}
+									€</p>
+								<div class="container-fluid">
+									<div class="row">
+										{% if session.user is defined %}
+											<div class="col-xs-12 col-sm-12 col-lg-6 col-xl-6 my-3">
+												<a class="button_gradient text-nowrap" href="/movieReservation/addMovieReservation/{{ movie.id }}">Réserver</a>
+											</div>
+										{% endif %}
+										{% if session.user is not defined %}
+											<div class="col-xs-12 col-sm-12 col-lg-12 col-xl-6 my-3">
+												<a class="button_gradient text-nowrap" href="/security/login">Réserver</a>
+											</div>
+										{% endif %}
+										<div class="col-xs-12 col-sm-12 col-lg-12 col-xl-6 my-3">
+											<a class="button text-nowrap" href="/movie/showForUser/{{ movie.id }}">+ d'infos</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</main>
+	</div>
+{% endblock %}

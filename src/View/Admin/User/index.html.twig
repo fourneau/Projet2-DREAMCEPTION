@@ -1,0 +1,52 @@
+{% extends 'adminlayout.html.twig' %}
+
+{% block content %}
+    {% include "Admin/adminheader.html.twig" %}
+    <main>
+        <div class="time">
+            <span class="defile"> {{ "now"|date("H:i:s d/m/Y") }} </span>
+        </div>
+        <div class="card">
+            <div class="card-index">
+                <h2>Utilisateurs</h2>
+                <div class="form-floating mb-3 text-end">
+                    <a href="register/">
+                        <button>Ajouter Utilisateur</button>
+                    </a>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-white">Username</th>
+                    <th scope="col" class="text-white">Firstname</th>
+                    <th scope="col" class="text-white">Lastname</th>
+                    <th scope="col" class="text-white">Email</th>
+                    <th scope="col" class="text-white">Administrateur</th>
+                    <th scope="col" class="text-white text-end"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+
+                        <td class="text-white"><a href="/user/show/{{ user.id }}"
+                                                  class="text-white">{{ user.username }}</a></td>
+                        <td class="text-white">{{ user.firstname }}</td>
+                        <td class="text-white">{{ user.lastname }}</td>
+                        <td class="text-white">{{ user.email }}</td>
+                        <td class="text-white">{{ user.is_admin }}</td>
+                        <td class="text-end">
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="card-back">
+                <a type="back" href="/admin/index">
+                    <button>Retour</button>
+                </a>
+            </div>
+        </div>
+    </main>
+{% endblock %}

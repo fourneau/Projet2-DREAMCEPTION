@@ -1,0 +1,36 @@
+{% extends 'adminlayout.html.twig' %}
+ {% block content %}
+	 {% include "Admin/adminheader.html.twig" %}
+	 <main>
+	 <div class="time">
+		 <span class="defile"> {{ "now"|date("H:i:s d/m/Y") }} </span>
+	 </div>
+
+		 <div class="card-movie">
+			 <div class="border_movies_card">
+				 <img src="/{{ user.image }} " class="card-img-top img-fluid p-2" alt="image du produit" id="show_product_image">
+				 <div class="card-movie-body text-center">
+					 <p class="card-title text-center" style="font-size: 1.5rem">
+						 <strong> {{ product.name }} </strong>
+						<h5 class="card-title">{{ user.id }}.{{ user.username }}</h5>
+						<p class="card-text">{{ user.firstname }}</p>
+						<p class="card-text">{{ user.lastname }}</p>
+						<p class="card-text">{{ user.email }}</p>
+                        <p class="card-text">{{ user.birthday }}</p>
+                        <p class="card-text">{{ user.adress }}</p>
+                        <p class="card-text">{{ user.phone }}</p>
+                        <p class="card-text">{{ user.email }}</p>
+                        {% if user.is_admin == true %}
+						<p class="card-text">Administrateur</p>
+						{% else %}
+						<p>Utilisateur</p>
+						{% endif %}
+					 <div class="movies_buttons">
+						<a href="/user/delete/{{ user.id }}" class="button_gradient button-big">Supprimer</a>
+						<a href="/user/index" class="button button-mob">Retour</a>
+					</div>
+				</div>
+			 </div>
+		 </div>
+			</main>
+{% endblock %}

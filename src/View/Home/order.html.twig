@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+{% block title %}
+	- Detail ORDER
+	{{ orderId }}
+{% endblock %}
+{% block content %}
+{% include "_nav_user.html.twig" %}
+	<section class="container-fluid" id="order">
+		<h1 class="text-center pt-5">Veuillez remplir les champs de paiement et de livraison</h1>
+		<div class="text-center">
+		<div class="separation"><hr></div>
+			<form action="" method="POST">
+				<div class="mb-3 m-5">
+					<label for="address">Veuillez confirmer votre adresse</label>
+					<input type="text" id="address" class="form-control mt-5" name="address" value="{{ session.user.adress }}">
+				</div>
+				<button type="submit" class="button_gradient mt-3">Payer</button>
+			</form>
+		</div>
+	</section>
+{% endblock %}

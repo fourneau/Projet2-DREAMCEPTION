@@ -1,0 +1,52 @@
+{% extends 'adminlayout.html.twig' %}
+{% block content %}
+    {% include "Admin/adminheader.html.twig" %}
+    <main>
+        <div class="time">
+            <span class="defile"> {{ "now"|date("H:i:s d/m/Y") }} </span>
+        </div>
+        <div class="card">
+            <div class="card-index">
+                <h2>Commande n°
+                    {{ orderId }}
+                    du
+                    {{ date.order_date|date('d-m-Y')}}
+                </h2>
+                {% set total = 0 %}
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-white">Produit</th>
+                    <th scope="col" class="text-white">Quantité</th>
+                    <th scope="col" class="text-white">Prix</th>
+                    <th scope="col" class="text-white">Sous total</th>
+                    <th scope="col" class="text-white text-end"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in ticket %}
+                    {% set total = total + item.product_id.price * item.qty %}
+                    <tr>
+                        <td>{{item.product_id.name}}</td>
+                        <td>{{item.qty}}</td>
+                        <td>{{item.product_id.price }}</td>
+                        <td>{{item.product_id.price * item.qty}}
+                            €</td>
+                        <th scope="col" class="text-white text-end"></th>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <h2>Total :
+                {{ total }}
+                €
+            </h2>
+            <div class="card-back">
+                <a href="/admin/indexOrders">
+                    <button> Retour</button>
+                </a>
+            </div>
+        </div>
+    </main>
+{% endblock %}

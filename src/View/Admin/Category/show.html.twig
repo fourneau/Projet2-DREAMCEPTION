@@ -1,0 +1,42 @@
+{% extends 'adminlayout.html.twig' %}
+{% block content %}
+    {% include "Admin/adminheader.html.twig" %}
+<main>
+    <div class="time">
+        <span class="defile"> {{ "now"|date("H:i:s d/m/Y") }} </span>
+    </div>
+    <div class="card">
+    <div class="card-index">
+       <h2>{{ category.id }}.{{ category.name }}</h2>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col" class="text-white">Produit</th>
+            <th scope="col" class="text-white">Image</th>
+            <th scope="col" class="text-white">Stock</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+        {% if category.id == product.category_id %}
+           <tr>
+               <td class="text-white"><a href="/admin/showProduct/{{ product.id }}" class="text-white">{{ product.name }}</a></td>
+               <td class="text-white"><img src="{{ product.image }}" class="img-fluid" width="250px" height="200px" alt="image du produit" id="product_image"></td>
+               <td class="text-white">{{ stock }}</td>
+               <td class="text-end">
+               </td>
+           </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <div class="movies_buttons">
+            <a type="back" href="/admin/editCategory/{{ category.id }}" class="button_gradient button-big" value="Modifier">Modifier</a>
+            <a type="back" href="/admin/deleteCategory/{{category.id}}" class="button_gradient button-big" value="Supprimer" >Supprimer</a>
+            <a type="back" href="/admin/indexCategory/" class="button button-mob" value="Retour">Retour</a>
+          </div>
+		</div>
+    </main>
+{% endblock %}

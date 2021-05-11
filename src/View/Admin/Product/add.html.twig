@@ -1,0 +1,13 @@
+{% extends 'adminlayout.html.twig' %}
+{% block content %}
+	{% include "Admin/adminheader.html.twig" %}
+	<main>
+		<div class="time"><span class="defile"> {{ "now"|date("H:i:s d/m/Y") }}</span></div>
+		<div class="title">
+				<h2>Ajouter un nouveau produit</h2>
+		</div>
+		<div>
+			{% include 'Admin/Product/_form.html.twig' %}
+		</div>
+	</main>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'adminlayout.html.twig' %}
+{% block title %}{% endblock %}
+{% block content %}
+    {% include "Admin/adminheader.html.twig" %}
+        <main>
+            <div class="time">
+                <span class="defile"> {{ "now"|date("H:i:s d/m/Y") }} </span>
+            </div>
+            <div class="card">
+                <div class="card-index">
+                    <h2>Reservation</h2>
+                    <div class="form-floating mb-3 text-end">
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="text-white">Seance #</th>
+                        <th scope="col" class="text-white">Horaire </th>
+                        <th scope="col" class="text-white">Date </th>
+                        <th scope="col" class="text-white text-end"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for movieReservation in movieReservations %}
+                        <tr>
+                            <td class="text-white">{{ movieReservation.id }}</td>
+                            <td class="text-white">{{ movieReservation.time }}</td>
+                            <td class="text-white">{{ movieReservation.date }}</td>
+                            <td class="text-end"></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="card-back">
+                    <a href="/admin/index">
+                        <button> Retour</button>
+                    </a>
+                </div>
+            </div>
+        </main>
+{% endblock %}

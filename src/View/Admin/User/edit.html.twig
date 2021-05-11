@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<div class="container-fluid" id="background-admin">
+		<div class="row">
+			{% include "Admin/_nav.html.twig" %}
+			<main class="container-fluid col-lg-11" id="edit">
+				<h1 class="text-white text-center">Modifier l'utilisateur {{ user.username }}</h1>
+				{% include 'Admin/User/_form.html.twig' %}
+			</main>
+		</div>
+	</div>
+{% endblock %}

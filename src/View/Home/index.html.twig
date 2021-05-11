@@ -1,0 +1,134 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+	{% include "/_nav_user.html.twig" %}
+	<main class='background-home' id="body">
+		<header id="background_home_img">
+
+			<div class="card-home p-0 m-0 text-center">
+				<video class="card-img" autoplay="" muted="" loop="">
+					<source src="../assets/images/dreamception-video1.mp4" type="video/mp4">
+				</video>
+				<div class="card-img-overlay d-flex h-50 flex-column my-auto align-items-center justify-content-center">
+					<h1 id="dreamception_title" class="display-4 mt-5">DREAMCEPTION</h1>
+					<p class="lead">Venez vivre une incroyable expérience qui vous transportera à travers vos rêves les plus fous !</p>
+					<div class="buttons">
+						<a class="button m-5" id="button_display_none_mob" href="/movie/indexForUser">Découvrir</a>
+						{% if session.user is defined %}
+							<a class="button_gradient m-5" href="/movie/indexForUser">Réservez maintenant !</a>
+						{% endif %}
+						{% if session.user is not defined %}
+							<a class="button_gradient m-5" href="/security/login">Réservez maintenant !</a>
+						{% endif %}
+						<a class="button m-5" id="button_display_none_mob" href="/contact/new">Contactez-nous !</a>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="separation"><hr></div>
+		<div id="carouselExampleControls1" class="carousel slide text-center mt-2 mb-2" data-bs-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active" id="carousel_home_main">
+					<img src="https://zupimages.net/up/21/17/nscy.jpeg" class="img-fluid" alt="...">
+				</div>
+				<div class="carousel-item" id="carousel_home_main">
+					<img src="https://zupimages.net/up/21/17/m4du.jpeg" class="img-fluid" alt="...">
+				</div>
+				<div class="carousel-item" id="carousel_home_main">
+					<img src="https://zupimages.net/up/21/17/z252.jpeg" class="img-fluid" alt="...">
+				</div>
+				<div class="carousel-item" id="carousel_home_main">
+					<img src="https://zupimages.net/up/21/17/xa8n.jpeg" class="img-fluid" alt="...">
+				</div>
+				<div class="carousel-item" id="carousel_home_main">
+					<img src="https://zupimages.net/up/21/17/mzk8.jpeg" class="img-fluid" alt="...">
+				</div>
+				<div class="carousel-item" id="carousel_home_main">
+					<img src="https://zupimages.net/up/21/16/dub6.jpg" class="img-fluid" alt="...">
+				</div>
+				<div class="carousel-item" id="carousel_home_main">
+					<img src="https://zupimages.net/up/21/17/irt2.jpeg" class="img-fluid" alt="...">
+				</div>
+				<div class="carousel-item" id="carousel_home_main">
+					<img src="https://zupimages.net/up/21/17/3u0y.jpeg" class="img-fluid" alt="...">
+				</div>
+				<div class="carousel-item" id="carousel_home_main">
+					<img src="https://zupimages.net/up/21/17/84wp.jpeg" class="img-fluid" alt="...">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+		<div class="separation"><hr></div>
+		<div class="about_us container-fluid">
+			<h2>UNE SALLE DE RÉALITÉ VIRTUELLE PAS COMME LES AUTRES...</h2>
+			<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla?</p>
+			<div class="row container-fluid mt-3">
+				<div class="col-4">
+					<img src="https://zupimages.net/up/21/17/9oqw.jpeg" class="img-fluid mx-2" alt="...">
+				</div>
+				<div class="col-4">
+					<img src="https://zupimages.net/up/21/17/n48g.jpeg" class="img-fluid mx-2" alt="...">
+				</div>
+				<div class="col-4">
+					<img src="https://zupimages.net/up/21/17/xa7f.jpeg" class="img-fluid mx-2" alt="...">
+				</div>
+			</div>
+		</div>
+		<div class="separation"><hr></div>
+		<div class="home_movies_part container-fluid" id="experience_inedite">
+			<h2>VIVEZ UNE EXPERIENCE INEDITE...</h2>
+			<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla?</p>
+			<div class="container-fluid">
+				<div class="buttons">
+					<a class="button_gradient m-2" href="/movie/indexForUser">Découvrir</a>
+				</div>
+			</div>
+		</div>
+		<div class="separation"><hr></div>
+		<div class="home_movies_part container-fluid">
+			<h2>ENVIE DE PROLONGER L'EXPERIENCE ? DECOUVREZ NOTRE BOUTIQUE...</h2>
+			<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla?</p>
+			<div class="container-fluid">
+				<div class="buttons">
+					<a class="button_gradient mt-2 mb-5" href="/product/indexUser">Boutique</a>
+				</div>
+			</div>
+			<div id="carouselExampleControls2" class="carousel slide text-center" data-bs-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active" id="carousel_boutique">
+						<img src="https://zupimages.net/up/21/17/iww8.png" class="img-fluid mx-2" alt="...">
+					</div>
+					<div class="carousel-item" id="carousel_boutique">
+						<img src="https://zupimages.net/up/21/17/r1oz.png" class="img-fluid" alt="...">
+					</div>
+					<div class="carousel-item" id="carousel_boutique">
+						<img src="https://zupimages.net/up/21/17/vcxi.jpeg" class="img-fluid" alt="...">
+					</div>
+					<div class="carousel-item" id="carousel_boutique">
+						<img src="https://zupimages.net/up/21/17/7g15.png" class="img-fluid" alt="...">
+					</div>
+					<div class="carousel-item" id="carousel_boutique">
+						<img src="https://zupimages.net/up/21/17/phzt.png" class="img-fluid" alt="...">
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+		<div class="scroll_up">
+			<a href=""><img src="https://zupimages.net/up/21/12/i2mq.png" alt="fleche retour haut"/></a>
+		</div>
+	</main>
+{% endblock %}

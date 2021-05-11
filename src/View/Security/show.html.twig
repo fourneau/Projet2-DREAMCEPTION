@@ -1,0 +1,53 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+{% include "_nav_user.html.twig" %}
+	<div class="container-fluid pt-5" id="body">
+		<div class="row text-center">
+			<h1 class="text-white text-center">Mon Compte</h1>
+			<div class="separation"><hr></div>
+			<main class="container-fluid col-lg-11 mt-5">
+				<div> <img src="{{ session.user.image }}" width="60px" height="50px" alt=""></div>
+				<p class="card-text">Prénom et nom :
+					{{ session.user.firstname }}
+					{{ session.user.lastname }}</p>
+				<p class="card-text">Email :
+					{{ session.user.email }}</p>
+				<p class="card-text">Date de naissance :
+					{{ session.user.birthday }}</p>
+				<p class="card-text">Adresse :
+					{{ session.user.adress }}</p>
+				<p class="card-text">Téléphone :
+					{{ session.user.phone }}</p>
+				<a href="/security/edit/{{ session.user.id }}" class="button_gradient">Modifier mon compte</a>
+				<h3 class="mt-5">Mes commandes</h3>
+				<div class="row mt-5">
+					<table class="table  text-white">
+						<thead>
+							<tr>
+								<th scope="col">COMMANDE N</th>
+								<th scope="col">DATE</th>
+								<th scope="col">TOTAL</th>
+								<th scope="col">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for order in orders %}
+								<tr>
+									<td>{{order.id}}</td>
+									<td>{{order.order_date|date('d-m-Y')}}</td>
+									<td>{{order.total}}
+										€</td>
+									<td>
+										<a href="/home/orderDetail/{{order.id}}" class="button button-mob">Détails</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<a href="/" class="button_gradient m-4">Retour</a>
+			</main>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+	{% include "/_nav_user.html.twig" %}
+	<section class="reservation_form pt-5" id="body">
+        <h2 class="text-center mb-3">Réservez votre évasion dès maintenant !</h2>
+        <div class="separation"><hr></div>
+        <div class="container-fluid p-4">
+            <div class="contact_form row m-5" id="contact_row">
+                <form method="POST">
+                    <input type="hidden" value="{{ movieReservation.id }}" name="id">
+                    <input type="hidden" value="{{ movieReservation.movie_id }}" name="movie_id">
+                    <div class="row g-2">
+                        <div class="col-md mx-3 my-3">
+                            <div class="form-floating">
+                                <input type="date" class="form-control" name="date" id="floatingInputs" placeholder="Sélectionnez la date:" value="{{ movieReservation.date }}">
+                                <label for="floatingInputs" class="form-label pt-2">Sélectionnez la date: </label>
+                            </div>
+                            <div class="errors">
+                                {% if errors.date is defined and not empty %}
+                                <div class="alert" role="alert" id="contact_error">       
+                                    <p>{{ errors.date }}</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md mx-3 my-3">
+                            <div class="form-floating">
+                                <input type="number" class="form-control" name="nb_pers" id="floatingInputs" placeholder="Entrez le nombre de personne :" value="{{ movieReservation.nb_pers }}">
+                                <label for="floatingInputs">Nb de personne :</label>
+                            </div>
+                            <div class="errors">
+                                {% if errors.nb_pers is defined and not empty %}
+                                <div class="alert" role="alert" id="contact_error">       
+                                    <p>{{ errors.nb_pers }}</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md mx-3 my-3 text-center">
+                        <h3 class="text-center">Sélectionnez votre créneau horaire</h3>
+                        <div class="form-floating">
+                            <span class="mx-3">
+                                <input type="radio" id="10H" name="time" value="10">
+                                <label for="10H">10H</label>
+                            </span>
+                            <span class="mx-3">
+                                <input type="radio" id="14H" name="time" value="14}">
+                                <label for="14H">14H</label>
+                            </span>
+                            <span class="mx-3">
+                                <input type="radio" id="16H" name="time" value="16">
+                                <label for="16H">16H</label>
+                            </span>
+                            <div class="errors">
+                                {% if errors.time is defined and not empty %}
+                                <div class="alert" role="alert" id="contact_error">       
+                                    <p>{{ errors.time }}</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-example text-center">
+                        <input class="button_gradient m-3" type="submit" value="Réserver!">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>					
+{% endblock %}

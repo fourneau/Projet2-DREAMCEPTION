@@ -1,0 +1,59 @@
+{% extends 'adminlayout.html.twig' %}
+{% block content %}
+    {% include "Admin/adminheader.html.twig" %}
+        <main>
+            <div class="time">
+                <span class="defile"> {{ "now"|date("H:i:s d/m/Y") }} </span>
+            </div>
+            <div class="card">
+                <div class="card-index">
+                    <h2>Films</h2>
+                    <div class="form-floating mb-3 text-end">
+                        <a type="back" href="/admin/addMovie">
+                            <button>Ajouter</button>
+                        </a>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="text-white">Titre</th>
+                        <th scope="col" class="text-white">Durée</th>
+                        <th scope="col" class="text-white">Description</th>
+                        <th scope="col" class="text-white">Prix</th>
+                        <th scope="col" class="text-white">Miniature</th>
+                        <th scope="col" class="text-white text-end"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for movie in movies %}
+                        <tr>
+                            <td>
+                                <a href="showMovie/{{ movie.id }}" class="text-white">{{ movie.name }}</a>
+                            </td>
+                            <td class="text-white">{{ movie.minutes }} min</td>
+                            <td class="text-white">{{ movie.description }}</td>
+                            <td class="text-white">{{ movie.price }} €</td>
+                            <td class="text-white"><img src="{{ movie.image }}" class="img-fluid" width="200px"
+                                                        height="120px" alt="" id="product_image"></td>
+                            <td class="text-end">
+                                <a href="/admin/editMovie/{{ movie.id }}">
+                                    <button>Modifier</button>
+                                </a>
+                                <a href="/admin/deleteMovie/{{ movie.id }}">
+                                    <button>Supprimer</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="card-back">
+                    <a type="back" href="/admin/index">
+                        <button>Retour</button>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}

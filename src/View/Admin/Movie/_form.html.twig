@@ -1,0 +1,54 @@
+<form method="post" class="container" enctype="multipart/form-data">
+    <div class="form-box">
+    <input type="hidden" value="{{ movie.id }}" name="id">
+        <div class="input-box">
+            <input type="text" class="form-control" id="floatingInput" placeholder="" value="{{ movie.name }}" name="name">
+            <label for="floatingInput" class="form-label">Nom :</label>
+        </div>
+        <div class="errors">
+            {% if errors.name is defined and not empty %}
+            <p>{{ errors.name }}</p>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <input type="number" class="form-control" id="floatingInput" placeholder="" value="{{ movie.minutes }}" name="minutes">
+            <label for="floatingInput" class="form-label">Minutes :</label>
+        </div>
+        <div class="errors">
+            {% if errors.minutes is defined and not empty %}
+            <p>{{ errors.minutes }}</p>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <textarea type="text" class="form-control" id="floatingInput" placeholder="" value="{{ movie.description }}" name="description"></textarea>
+            <label for="floatingInput" class="form-label">Description :</label>
+        </div>
+        <div class="errors">
+            {% if errors.description is defined and not empty %}
+            <p>{{ errors.description }}</p>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <input type="number" class="form-control" id="floatingInput" placeholder="" value="{{ movie.price }}" name="price">
+            <label for="floatingInput" class="form-label">Prix :</label>
+        </div>
+        <div class="errors">
+            {% if errors.price is defined and not empty %}
+            <p>{{ errors.price }}</p>
+            {% endif %}
+        </div>
+        <div class="input-box">
+            <label for="image" class="form-label">Ajout Image : </label>
+            <input type="file" class="form" id="image" name="image">
+        </div>
+        <div class="errors">
+            {% if errors.image is defined and not empty %}
+                <p>{{ errors.image }}</p>
+            {% endif %}
+        </div>
+        <div class="container-fluid">
+            <input type="submit" class="form-button" value="Valider">
+            <a type="back" href="/admin/indexMovies" class="return-button" value="Retour"><i class="las la-undo"></i></a>
+        </div>
+    </div>
+</form>

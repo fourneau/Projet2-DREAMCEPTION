@@ -1,0 +1,31 @@
+{% extends 'adminlayout.html.twig' %}
+ {% block content %}
+	 {% include "Admin/adminheader.html.twig" %}
+	 <main>
+		 <div class="time">
+			 <span class="defile"> {{ "now"|date("H:i:s d/m/Y") }} </span>
+		 </div>
+		 <div class="card-movie">
+			 <div class="border_movies_card">
+			 <div class="card-movie-body">
+				 <p class="card-title text-center" style="font-size: 1.5rem">Question de <strong>
+						 {{ contact.lastname }}
+						 {{ contact.firstname }}
+					 </strong>
+				</p>
+				 <h4>Sujet :</h4>
+				 <p class="text">{{ contact.subject }}</p>
+				 <p class="text mt-3"><h4>Mail :</h4></p>
+				 <p class="text" id="copie">{{ contact.email }}</p>
+				 <p class="text mt-3"><h4>Message :</h4></p>
+				 <p class="text">{{ contact.message }}</p>
+
+				 <div class="movies_buttons">
+							<a type="back" href="mailto:{{contact.email}}" class="button_gradient button-big" value="Répondre">Répondre</a>
+							<a type="back" href="/contact/delete/{{contact.id}}" class="button_gradient button-big" value="Supprimer">Supprimer</a>
+							<a type="back" href="/contact/index" class="button button-mob" value="Retour">Retour</a>
+						</div>
+					</div>
+				</div>
+			</main>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+
+	{% include "/_nav_user.html.twig" %}
+	<div class="container-fluid merci p-0">
+		<h1 class="text-white text-center pt-5">Merci pour votre message !</h1>
+		<div class="separation"><hr></div>
+		<h3 class="text-white text-center py-5 my-5">Nous traiterons votre demande dans les plus brefs délais.</h3>
+		<h3 class="text-white text-center py-5 my-5">Vous souhaitez peut-être réserver un film ?</h3>
+		<div class="text-center">
+			<a type="back" href="/movie/indexForUser" class="button_gradient" value="Retour">Nos films</a>
+		</div>
+		<h3 class="text-white text-center py-5 my-5">Ou vous souhaitez vous équiper pour profiter de cette expérience à la maison ?</h3>
+		<div class="text-center">
+			<a type="back" href="/product/indexUser" class="button_gradient" value="Retour">Nos équipements</a>
+		</div>
+		<div class="py-5 mt-5 text-center">
+			<a type="back" href="/home/index" class="button" value="Retour">Retour au site</a>
+		</div>
+	</div>
+{% endblock %}

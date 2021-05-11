@@ -1,0 +1,62 @@
+{% extends 'adminlayout.html.twig' %}
+{% block content %}
+	{% include "Admin/adminheader.html.twig" %}
+	<main>
+		<div class="time">
+			<span class="defile">
+				{{ "now"|date("H:i:s d/m/Y") }}
+			</span>
+		</div>
+		<div class="card">
+			<div class="card-index">
+				<h2>Produits</h2>
+				<div class="form-floating mb-3 text-end">
+					<a href="/admin/addProduct/">
+						<button>
+							Ajouter</button>
+					</a>
+				</div>
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col" class="text-white">Produit</th>
+						<th scope="col" class="text-white">Image</th>
+						<th scope="col" class="text-white">Stock</th>
+						<th scope="col" class="text-white">Prix</th>
+						<th scope="col" class="text-white">Categorie</th>
+						<th scope="col" class="text-white text-end"></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for product in products %}
+						<tr>
+							<td class="text-white">
+								<a href="showProduct/{{ product.id }}" class="text-white">{{ product.name }}</a>
+							</td>
+							<td class="text-white"><img src="{{ product.image }}" class="img-fluid" width="250px" height="200px" alt="image du produit" id="product_image"></td>
+							<td class="text-white">{{ product.stock }}</td>
+							<td class="text-white">{{ product.price }}
+								€</td>
+							<td class="text-white">{{ product.category_name }}</td>
+							<td class="text-end">
+								<a href="/admin/editProduct/{{ product.id }}">
+									<button>Modifier</button>
+								</a>
+								<a href="/admin/deleteProduct/{{ product.id }}" onclick="return(confirm('Etes-vous sûr de vouloir supprimer ce produit ?'))">
+									<button>Supprimer</button>
+								</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<div class="card-back">
+				<a href="/admin/index">
+					<button>
+						Retour</button>
+				</a>
+			</div>
+		</div>
+	</main>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+{% block title %}
+	- Panier
+{% endblock %}
+{% block content %}
+	{% include "_nav_user.html.twig" %}
+	<section class="container-fluid p-0" id="body">
+	<div class="panier pt-5">
+		<h1 class="text-center text-white">Panier</h1>
+		<div class="separation"><hr></div>
+		<table class="table text-white" id="tableCart">
+			<thead>
+				<tr>
+					<th class="text-white" scope="col">Nom</th>
+					<th class="text-white" scope="col">Quantité</th>
+					<th class="text-white" scope="col">Total</th>
+					<th class="text-white" scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for product in cart %}
+				{% set total = total + product.price * product.qty %}
+					<tr>
+						<td>{{product.name}}</td>
+						<form action="/home/addInCart" method="POST">
+							<td>
+							    <input type="hidden" value="{{ product.id }}" name="id">
+								<select class="form-select" aria-label="Default select example" name="qty">
+									<option>{{ product.qty }}</option>
+									{% for i in 1..10 %}
+									<option value="{{ i }}">{{ i }}</option>
+									{% endfor %}
+								</select></br>
+								<input name="confirmer" value="Confirmer" type="submit" class="button_gradient"/>
+							</td>
+							<td>{{product.qty * product.price}}</td>
+							<td>
+						</form>
+							<a href="/home/deleteFromCart/{{product.id}}" class="button">Supprimer</a>
+						</td>
+					</tr>
+				{% endfor %}	
+			</tbody>
+		</table>
+		<h3>Total :
+			{{totalInCart}}
+			€</h3>
+		{% if session.user is defined and cart is not empty %}
+			<a class="button_gradient m-4" href="/home/order">Passer la commande</a>
+		{% endif %}
+		{% if session.user is empty %}
+			<a class= "button_gradient m-4" href="/security/login">Connectez-vous pour passer la commande</a>
+		{% endif %}
+		<a class="button button-mob m-2" href="/product/indexUser/{{ product.id }}">Continuez votre commande</a>
+	</div>
+{% endblock %}
+{% block javascript %}
+
+{% endblock %}

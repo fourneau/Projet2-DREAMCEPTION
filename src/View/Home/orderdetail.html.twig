@@ -1,0 +1,53 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+	{% include "_nav_user.html.twig" %}
+	<div class="container-fluid p-0" id="body_movie">
+		<h1 class="text-center text-white pt-5">Commande n°
+			{{ orderId }}
+			du
+			{{ date.order_date|date('d-m-Y')}}</h1>
+			<div class="separation"><hr></div>
+			<div class="container-fluid p-0  text-white">
+				<h3 class = "text-white">{{ session.user.firstname }} {{ session.user.lastname }}</h3>
+				<div>{{ session.user.adress }}</div>
+				<div>{{ session.user.email }}</div>
+			</div>
+		{% set total = 0 %}
+		<main class="container-fluid mt-5 pb-5">
+			<div class="row pt-5 pb-5">
+				<table class="text-white text-center  pt-5  pb-5">
+					<thead>
+						<tr>
+							<th>Produit</th>
+							<th>Adresse de livraison</th>
+							<th>Quantité</th>
+							<th>Sous total</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in ticket %}
+							{% set total = total + item.product_id.price * item.qty %}
+							<tr>
+								<td>{{item.product_id.name}}</a></td>
+								<td>{{item.address}}</td>
+								<td>{{item.qty}}</td>
+								<td>{{item.product_id.price * item.qty}}
+									€</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<div class="text-center my-5 py-5">
+			<h2>Total :
+					{{ total }}
+					€
+				</h2>
+				</div>
+			<div class="text-center py-5 my-5">
+				<a type="back" href="/" class="button m-3">Retour</a>
+			</div>
+		</main>
+	</div>
+</div>
+{% endblock %}
